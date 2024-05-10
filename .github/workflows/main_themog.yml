@@ -7,38 +7,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
         with:
-          node-version: '20.x'
+          name: node-app
 
-      - name: npm install
-        run: npm install
-
-      - name: npm build (optional)
-        run: npm run build --if-present
-
-      - name: npm test (optional)
-        run: npm run test --if-present
-        continue-on-error: true
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
       
-      - name: Login to Azure
+      - name: Login to Azure using publish profile
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8B45000A6EAD4AB39D7DFC1256B629DD }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_60F40178F1234D65878DDB165E86982D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6CB7E5F4E5194B019DF4F2CBFCD878A3 }}
+          creds: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'theMOG'
           slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
-          
