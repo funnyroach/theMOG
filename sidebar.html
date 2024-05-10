@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I see</title>
+    <style>
+        #sidebar {
+            height: 100vh;
+            width: 500px; /* Fixed width */
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            right: 0;
+            background-color: #fff; /* Lighter background */
+            overflow-x: hidden;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Adding shadow for depth */
+        }
+        #closeSidebar {
+            display: block;
+            margin-bottom: 20px;
+            background-color: #3498db; /* Changing color for a modern look */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333; /* Darker font color for better readability */
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea; /* Adding a subtle line to separate sections */
+            font: bold 16px Helvetica, Sans-Serif;
+        }
+        /* Adding style for the content sections */
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Relevant titles:</h2>
+        <div id="sidebarContent">Push "Find data" and I will find here relevant for energy industry titles</div> <!-- Container for dynamic content -->
+        <h2>Analyzed data:</h2>
+        <div id="sidebarAnalyzed">Push "Analyze data" and I will read and analyze what I see here in few moments</div> 
+        
+    </div>
+</body>
+</html>
