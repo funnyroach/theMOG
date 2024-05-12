@@ -8,10 +8,14 @@
     "activeTab",
     "storage",
     "tabs",
-    "<all_urls>"
+    "<all_urls>",
+    "https://themog.azurewebsites.net/"
   ],
   "background": {
     "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://themog.azurewebsites.net/; object-src 'self'"
   },
   "content_scripts": [
     {
@@ -37,5 +41,6 @@
       "resources": ["sidebar.html"],
       "matches": ["<all_urls>"]
     }
+  
   ]
 }

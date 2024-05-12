@@ -2,7 +2,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     if (request.action === "processText") {
         console.log("Received processText request:", request);
 
-        fetch('http://localhost:3000/api/analyze', {
+        fetch('https://themog.azurewebsites.net/api/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: request.textData })
@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     }
     if (request.action === "updateSidebarRSS") {
         console.log("Received updateSidebarRSS request:", request);
-        fetch('http://localhost:3000/rssData')
+        fetch('https://themog.azurewebsites.net/rssData')
             .then(response => response.json())
             .then(rssData => {
                 console.log("RSS Data:", rssData.items); // Check the data in the console
