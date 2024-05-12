@@ -1,12 +1,13 @@
 {
   "name": "cmt-plugin",
   "version": "1.0.0",
-  "description": "",
-  "main": "content.js",
+  "description": "Server backend for the CMT Chrome plugin handling AI-driven data analysis.",
+  "main": "server.js", 
   "scripts": {
-    "test": "echo \"No tests specified\""
+    "start": "node server.js", 
+    "test": "echo \"No tests specified\" && exit 0" 
   },
-  "author": "",
+  "author": "ThechandSolo",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.2",
