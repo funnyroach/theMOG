@@ -54,4 +54,4 @@ Email: s.zavershinsky@gmail.com
 YouTube Channel - [http://www.youtube.com/@techandsolo]
 
 ### Stay Connected
-Join our Discord community [Link]
+Join our Discord community [Link](https://discord.gg/54T5RfmM8D)]
