@@ -9,7 +9,7 @@ description: AI-powered open-source market analysis platform
 ## Introduction
 theMOG is an AI-powered open-source market analysis platform designed to empower businesses with real-time data and predictive insights. Join our community of developers and data scientists in revolutionizing market analysis.
 
-[![Contribute on GitHub](https://img.shields.io/badge/contribute%20on-GitHub-blue)](https://github.com/your-username/theMOG)
+[![Contribute on GitHub](https://img.shields.io/badge/contribute%20on-GitHub-blue)]([https://github.com/funnyroach/theMOG])
 
 ## Features
 - AI-powered insights
