@@ -13,7 +13,7 @@ app.post('/api/analyze', async (req, res) => {
         const textData = req.body.text;
         console.log("Received text for analysis:", textData);
         const response = await openai.chat.completions.create({
-            model: "gpt-4-1106-preview",
+            model: "gpt-4o-2024-05-13",
             messages: [
                 {
                     "role": "system", 
