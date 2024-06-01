@@ -26,10 +26,10 @@ app.post('/api/analyze', async (req, res) => {
                 {
                     "role": "assistant", 
                     "content": `Given the article text: "${textData}"
-                                1) Summarize the article briefly in two sentences, focusing on the main topic and key details.+<br><br>
+                                1) Summarize the article briefly in two sentences, focusing on the main topic and key details.
                                 2) Analyze and state in one sentence how the information in the article strategically affects the oil and gas market.
-                                3) Describe in one sentence the operational impact of the article's content on the market.+\n\n
-                                4) Conclude with one sentence on the best course of action or consideration based on the information provided.+\n`
+                                3) Describe in one sentence the operational impact of the article's content on the market.
+                                4) Conclude with one sentence on the best course of action or consideration based on the information provided.`
                 }
             ],
         });
