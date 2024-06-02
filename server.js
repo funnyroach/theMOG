@@ -40,6 +40,30 @@ app.post('/api/analyze', async (req, res) => {
         res.status(500).send('Error processing request');
     }
 });
+app.post('/api/getPictureOfTheDay', async (req, res) => {
+    try {
+        const prompt = req.body.prompt;
+        console.log("Received prompt for Picture of the Day:", prompt);
+        const response = await openai.createChatCompletion({
+            model: "gpt-4",
+            messages: [
+                {
+                    "role": "system", 
+                    "content": "The following is a conversation with an AI trained to analyze oil and gas market trends."
+                },
+                {
+                    "role": "user", 
+                    "content": "1) Analyze the current trends in the oil and gas market over the past three days using web search for analysis, considering changes in supply and demand, geopolitical events, and regulatory changes. 2) Based on historical data and current trends, forecast oil prices for the next month using web search for analysis, considering seasonal fluctuations and global demand forecasts. 3) Analyze Twitter data with the hashtag #OilPrices over the past 3 days and determine the main user sentiments. What key topics are being discussed, and how might this affect the market?"
+                }
+            ],
+        });
+        console.log("OpenAI API response for Picture of the Day:", response.data.choices[0].message.content);
+        res.send({ result: response.data.choices[0].message.content });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error processing request');
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
