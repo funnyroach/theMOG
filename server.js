@@ -55,19 +55,18 @@ app.post('/api/getPictureOfTheDay', async (req, res) => {
                 {
                     "role": "user", 
                     "content": prompt
+                },
+                {
+                    "role": "assistant", 
+                    "content": prompt
                 }
             ],
         });
         console.log("OpenAI API response for Picture of the Day:", response.data.choices[0].message.content);
         res.send({ result: response.data.choices[0].message.content });
     } catch (error) {
-        if (error.response) {
-            console.error("Error response from OpenAI:", error.response.status, error.response.data);
-            res.status(error.response.status).send(error.response.data);
-        } else {
-            console.error("Error processing /api/getPictureOfTheDay request:", error.message);
-            res.status(500).send('Error processing request');
-        }
+        console.error(error);
+        res.status(500).send('Error processing request');
     }
 });
 
