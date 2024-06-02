@@ -1,10 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const OpenAIAPI  = require('openai');
+const cors = require('cors');
+const OpenAIAPI = require('openai');
 
 const app = express();
 app.use(bodyParser.json());
+
+// Set up CORS to allow your Chrome extension
+app.use(cors({
+    origin: 'chrome-extension://pfhopcncofbhoahhdcebfhhgnegofepk' // Replace with your actual extension ID
+}));
 
 const openai = new OpenAIAPI({ apiKey: process.env.OPENAI_API_KEY });
 
