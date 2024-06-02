@@ -44,8 +44,8 @@ app.post('/api/getPictureOfTheDay', async (req, res) => {
     try {
         const prompt = req.body.prompt;
         console.log("Received prompt for Picture of the Day:", prompt);
-        const response = await openai.createChatCompletion({
-            model: "gpt-4",
+        const response = await openai.chat.completions.create({
+            model: "gpt-4o-2024-05-13",
             messages: [
                 {
                     "role": "system", 
