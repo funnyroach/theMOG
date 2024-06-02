@@ -40,11 +40,12 @@ app.post('/api/analyze', async (req, res) => {
         res.status(500).send('Error processing request');
     }
 });
+
 app.post('/api/getPictureOfTheDay', async (req, res) => {
     try {
         const prompt = "Analyze the current trends in the oil and gas market over the past three months using web search for analysis, considering changes in supply and demand, geopolitical events, and regulatory changes.";
         console.log("Received request for Picture of the Day with prompt:", prompt);
-        const response = await openai.createChatCompletion({
+        const response = await openai.chat.completions.create({
             model: "gpt-4o-2024-05-13",
             messages: [
                 {
@@ -60,8 +61,13 @@ app.post('/api/getPictureOfTheDay', async (req, res) => {
         console.log("OpenAI API response for Picture of the Day:", response.data.choices[0].message.content);
         res.send({ result: response.data.choices[0].message.content });
     } catch (error) {
-        console.error("Error processing /api/getPictureOfTheDay request:", error.response ? error.response.data : error.message);
-        res.status(500).send('Error processing request');
+        if (error.response) {
+            console.error("Error response from OpenAI:", error.response.status, error.response.data);
+            res.status(error.response.status).send(error.response.data);
+        } else {
+            console.error("Error processing /api/getPictureOfTheDay request:", error.message);
+            res.status(500).send('Error processing request');
+        }
     }
 });
 
